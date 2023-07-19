@@ -36,10 +36,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 3rd party
-    'admin_view_permission',
-    # 3rd party end
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,7 +47,8 @@ INSTALLED_APPS = [
     'rest_framework',
     
     # local 
-    'auth_api'
+    'auth_api',
+    'core_api'
 ]
 
 MIDDLEWARE = [
