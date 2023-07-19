@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     
     # local 
     'auth_api',
-    'core_api'
+    'core_api',
+    'maps_api'
 ]
 
 MIDDLEWARE = [

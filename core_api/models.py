@@ -4,7 +4,10 @@ from django.db import models
 from django.db.models import Q
 from django.utils.translation import gettext as _
 
+from maps_api.models import Building
+
 User = get_user_model()
+
 
 class Faculty(models.Model):
     title = models.CharField(
@@ -89,6 +92,8 @@ class SubList(models.Model):
 
     main_course_group = models.ForeignKey(CourseGroup, on_delete=models.CASCADE, related_name='sub_list_main_course_group', blank=False, null=False)
     additional_course_groups = models.ManyToManyField(CourseGroup, limit_choices_to=~Q(id=models.F("sub_list_add_course_group")), related_name='sub_list_add_course_group', blank=False)
+
+    buildings = models.ManyToManyField(Building, related_name='sub_list_buildings', blank=False)
 
     def __str__(self):
         return self.title
