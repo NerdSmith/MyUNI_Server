@@ -71,8 +71,8 @@ class CourseGroup(models.Model):
     direction = models.ForeignKey(Direction, on_delete=models.CASCADE, related_name='course_groups', blank=False, null=False)
 
     class Meta:
-        verbose_name = "CourseGroup"
-        verbose_name_plural = "CourseGroups"
+        verbose_name = "Course Group"
+        verbose_name_plural = "Course Groups"
 
     def __str__(self):
         return f"{self.course_number} course {self.group_number}{f'.{self.subgroup_number}' if self.subgroup_number is not None else ''} group"

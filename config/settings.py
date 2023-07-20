@@ -51,7 +51,9 @@ INSTALLED_APPS = [
     'core_api',
     'maps_api',
     'wvs_api',
-    'manual_api'
+    'manual_api',
+    'event_api',
+    'schedule_api'
 ]
 
 MIDDLEWARE = [
