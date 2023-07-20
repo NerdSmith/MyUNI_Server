@@ -86,17 +86,17 @@ class SubList(models.Model):
         null=False,
         unique=True
     )
-    owner = models.OneToOneField(User, on_delete=models.CASCADE, null=False, blank=False, related_name='sub_list')
-    main_direction = models.ForeignKey(Direction, on_delete=models.CASCADE, related_name='direction_sub_list', blank=False, null=False)
+    owner = models.OneToOneField(User, on_delete=models.CASCADE, null=False, blank=False, related_name='sub_lists')
+    main_direction = models.ForeignKey(Direction, on_delete=models.CASCADE, related_name='direction_sub_lists', blank=False, null=False)
 
     # smth else
 
-    buildings = models.ManyToManyField(Building, related_name='sub_list_buildings', blank=False)
+    buildings = models.ManyToManyField(Building, related_name='building_sub_lists', blank=False)
 
-    main_course_group = models.ForeignKey(CourseGroup, on_delete=models.CASCADE, related_name='sub_list_main_course_group', blank=False, null=False)
-    additional_course_groups = models.ManyToManyField(CourseGroup, limit_choices_to=~Q(id=models.F("sub_list_add_course_group")), related_name='sub_list_add_course_group', blank=False)
+    main_course_group = models.ForeignKey(CourseGroup, on_delete=models.CASCADE, related_name='main_course_group_sub_lists', blank=False, null=False)
+    additional_course_groups = models.ManyToManyField(CourseGroup, limit_choices_to=~Q(id=models.F("add_course_group_sub_lists")), related_name='add_course_group_sub_lists', blank=False)
 
-    wvs = models.ManyToManyField(WV, related_name='sub_list_wvs', blank=False)
+    wvs = models.ManyToManyField(WV, related_name='wv_sub_lists', blank=False)
 
     def __str__(self):
         return self.title

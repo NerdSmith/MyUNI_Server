@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'wvs_api',
     'manual_api',
     'event_api',
-    'schedule_api'
+    'schedule_api',
+    'publications_api'
 ]
 
 MIDDLEWARE = [

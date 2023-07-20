@@ -15,7 +15,7 @@ class Subject(models.Model):
         blank=False,
         null=False
     )
-    direction = models.ManyToManyField("core_api.direction", related_name='subject_directions', blank=False)
+    direction = models.ManyToManyField("core_api.direction", related_name='direction_subjects', blank=False)
 
 
 class InfoPost(models.Model):
@@ -47,4 +47,4 @@ class InfoPost(models.Model):
         null=False
     )
 
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='info_post_subject', blank=False, null=False)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='subject_info_posts', blank=False, null=False)

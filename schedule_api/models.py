@@ -12,11 +12,11 @@ class Schedule(models.Model):
                f'{self.course_group.course_number}_' \
                f'{self.course_group.group_number}' \
                f'.{self.course_group.subgroup_number}_' if self.course_group.subgroup_number is not None else '_' \
-               f'{self.course_group.higher_education_level}.json'
+               f'{self.course_group.education_level}.json'
         return path
 
     course_group = models.ForeignKey("core_api.CourseGroup",
-                                     on_delete=models.CASCADE, related_name='schedule_course_group', blank=False, null=False)
+                                     on_delete=models.CASCADE, related_name='course_group_schedule', blank=False, null=False)
     schedule_file = models.FileField(_('Schedule file'), upload_to=get_schedule_path,
                                      validators=[
                                          FileExtensionValidator(['json']),
