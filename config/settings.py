@@ -49,7 +49,9 @@ INSTALLED_APPS = [
     # local 
     'auth_api',
     'core_api',
-    'maps_api'
+    'maps_api',
+    'wvs_api',
+    'manual_api'
 ]
 
 MIDDLEWARE = [

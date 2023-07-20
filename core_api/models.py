@@ -5,6 +5,7 @@ from django.db.models import Q
 from django.utils.translation import gettext as _
 
 from maps_api.models import Building
+from wvs_api.models import WV
 
 User = get_user_model()
 
@@ -90,10 +91,12 @@ class SubList(models.Model):
 
     # smth else
 
+    buildings = models.ManyToManyField(Building, related_name='sub_list_buildings', blank=False)
+
     main_course_group = models.ForeignKey(CourseGroup, on_delete=models.CASCADE, related_name='sub_list_main_course_group', blank=False, null=False)
     additional_course_groups = models.ManyToManyField(CourseGroup, limit_choices_to=~Q(id=models.F("sub_list_add_course_group")), related_name='sub_list_add_course_group', blank=False)
 
-    buildings = models.ManyToManyField(Building, related_name='sub_list_buildings', blank=False)
+    wvs = models.ManyToManyField(WV, related_name='sub_list_wvs', blank=False)
 
     def __str__(self):
         return self.title
