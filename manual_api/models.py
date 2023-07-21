@@ -17,6 +17,9 @@ class Subject(models.Model):
     )
     direction = models.ManyToManyField("core_api.direction", related_name='direction_subjects', blank=False)
 
+    def __str__(self):
+        return self.title
+
 
 class InfoPost(models.Model):
     title = models.CharField(
@@ -48,3 +51,6 @@ class InfoPost(models.Model):
     )
 
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='subject_info_posts', blank=False, null=False)
+
+    def __str__(self):
+        return self.title

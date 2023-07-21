@@ -11,7 +11,7 @@ User = get_user_model()
 # https://github.com/pgorecki/django-cancan
 
 
-admin.site.unregister(User)
+# admin.site.unregister(User)
 
 
 @admin.register(User)

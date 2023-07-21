@@ -12,6 +12,9 @@ class PubTag(models.Model):
         unique=True
     )
 
+    def __str__(self):
+        return self.title
+
 
 class PubGroup(models.Model):
     title = models.CharField(
@@ -36,6 +39,9 @@ class PubGroup(models.Model):
 
     tags = models.ManyToManyField(PubTag, related_name='pub_tag_pub_groups', blank=False)
 
+    def __str__(self):
+        return self.title
+
 
 class Publication(models.Model):
     title = models.CharField(
@@ -55,6 +61,9 @@ class Publication(models.Model):
     parent_group = models.ForeignKey(PubGroup, on_delete=models.CASCADE, related_name='pub_group_publications', blank=False, null=False)
     tags = models.ManyToManyField(PubTag, related_name='pub_tag_publications', blank=False)
 
+    def __str__(self):
+        return self.title
+
 
 class PubPicture(models.Model):
     order_nb = models.IntegerField(_('Pic order number'), help_text="Starts from 0")
@@ -65,3 +74,6 @@ class PubPicture(models.Model):
         null=False
     )
     publication = models.ForeignKey(Publication, on_delete=models.CASCADE, related_name='publication_pictures', blank=False, null=False)
+
+    def __str__(self):
+        return f"Pic #{self.order_nb} of {self.publication}"

@@ -19,3 +19,6 @@ class WV(models.Model):
     url = models.URLField(max_length=100, blank=False, null=False)
     list_of_auto_fields = models.JSONField(
         default=get_default_auto_fields, max_length=100, blank=False, null=False)
+
+    def __str__(self):
+        return self.title
